@@ -1,42 +1,134 @@
 import React from 'react';
-import logo from '../logo.svg'
 import '../App.css';
-import {Grid, styled, Typography} from "@mui/material";
+import {
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Paper,
+    styled,
+    Typography
+} from "@mui/material";
 
-type SkillPropsType = {
-    skillName: string
-    skillNameColor: string
-    skillInfo: string
-    skillImg: string
+type ExampleOfWorkPropsType = {
+    previewImage: string,
+    projectName: string,
+    projectDescription: string
+    gitHubURL: string
 }
 
-function Skill({skillImg, skillInfo, skillName, skillNameColor}: SkillPropsType) {
+function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL}:ExampleOfWorkPropsType) {
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => setOpen(true);
+
+    const handleClose = () => setOpen(false);
 
     return (
-        <SkillContainer>
-            <img src={skillImg} style={{width:'100px', height:'100px'}}  alt="logo"/>
-            <Typography variant={"h5"} color={skillNameColor}>
-                {skillName}
+        <ExampleOfWorkContainer elevation={5}>
+            <img src={previewImage} onClick={handleClickOpen}/>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                fullWidth
+                maxWidth={"xl"}
+            >
+                <DialogTitle >
+                    {projectName}
+                </DialogTitle>
+                <DialogContent >
+                    <DialogContentText>
+                        <img src={previewImage} style={{width:'77vw', overflowX:'hidden'}}/>
+                    </DialogContentText>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color={"secondary"}>close</Button>
+                    <Button onClick={handleClose} color={"success"} href={gitHubURL} target="_blank">Try online</Button>
+                </DialogActions>
+            </Dialog>
+            <Typography variant={"body2"} fontSize={"medium"} fontWeight={"bold"}>Click to open preview</Typography>
+            <Typography variant={"h5"}>
+                {projectName}
             </Typography>
-            <Typography variant={"body1"}>
-                {skillInfo}
+            <Typography variant={"subtitle2"}>
+                {projectDescription}
             </Typography>
-        </SkillContainer>
+        </ExampleOfWorkContainer>
     );
 }
 
-export default Skill;
+export default ExampleOfWork;
 
-const SkillContainer = styled(Grid)`
+const ExampleOfWorkContainer = styled(Paper)`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  height: 100%;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  text-align: center;
+  width: 45%;
+  height: 100%;
+  padding: 40px;
+  
+  
+  img {
+    width: 500px;
+    border: 1px solid gray;
+    transition: 0.5s;
+    :hover {
+      opacity: 0.3;
+      cursor: pointer;
+      transform: scale(1.3);
+    }
 
-  & .MuiTypography-root {
-    padding: 20px;
   }
+
+  .MuiTypography-body2 {
+    display: none;
+    position: absolute;
+    margin-top: 90px;
+    color: #3f51b5;
+    :hover {
+      display: block;
+      opacity: 1;
+       & img {
+        opacity: 0.3;
+      }
+    }
+  }
+  .MuiTypography-h5 {
+    padding-top: 20px;
+  }
+
+  & :hover {
+    & + .MuiTypography-body2 {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: auto auto 20px;
+    img{
+      width: 400px;
+    }
+  }
+  @media (max-width: 1024px) {
+    img{
+      width: 250px;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    img{
+      width: 300px;
+    }
+  }
+  
 `
+
+
