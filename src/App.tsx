@@ -26,62 +26,14 @@ import CheckIcon from '@mui/icons-material/Check';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import Skill from "./components/Skill";
 import ExampleOfWork from "./components/ExampleOfWork";
-import socialNetworkPreview from './temp/social-network-preview-img.png'
-import todolistPreview from './temp/todolist-preview-img.png'
-
-type SkillType = {
-    skillName: string
-    skillNameColor: string
-    skillInfo: string
-    skillImg: string
-}
-type ExampleProjectType = {
-    previewImage: string,
-    projectName: string,
-    projectDescription: string
-    gitHubURL: string
-}
-
-const skills = [
-    {
-        skillName: 'React',
-        skillNameColor: '#61DBFB',
-        skillInfo: 'React is a declarative, efficient, and flexible JavaScript library for building user interfaces. ',
-        skillImg: 'https://img.icons8.com/color/96/000000/react-native.png'
-    },
-    {
-        skillName: 'Redux',
-        skillNameColor: '#764abc',
-        skillInfo: 'Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.',
-        skillImg: 'https://img.icons8.com/color/96/000000/redux.png'
-    },
-    {
-        skillName: 'TypeScript',
-        skillNameColor: '#007acc',
-        skillInfo: 'TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.',
-        skillImg: 'https://img.icons8.com/color/96/000000/typescript.png'
-    },
-] as Array<SkillType>
-const workExamples = [
-    {
-        previewImage: socialNetworkPreview,
-        projectName: 'Social network',
-        projectDescription: 'A social network is a website that allows people with similar interests to come together and shar information and photos',
-        gitHubURL: 'https://aleksandrdemidovich.github.io/social-network-mui/'
-    },
-    {
-        previewImage: todolistPreview,
-        projectName: 'Todolist',
-        projectDescription: 'What is a ToDo List? The definition is a simple one. It\'s a list of tasks you need to complete, or things that you want to do.',
-        gitHubURL: 'https://aleksandrdemidovich.github.io/todo-list/'
-    },
-] as Array<ExampleProjectType>
+import {skills} from "./data/Skills";
+import {workExamples} from "./data/WorkExamples";
+import {particleOpt} from "./common/backgroundOptions";
+import Particles from "react-tsparticles";
 
 
 function App() {
-
-    const [isDarkMode, setDarkMode] = useState(false)
-
+    const [isDarkMode, setDarkMode] = useState(true)
 
     const mainRef = React.useRef<HTMLDivElement>(null)
     const skillsRef = React.useRef<HTMLDivElement>(null)
@@ -131,6 +83,8 @@ function App() {
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <CssBaseline/>
             <div className="App">
+                <Particles style={{position: "absolute", top: 0, bottom: 0, right: 0, left: 0}}
+                           params={particleOpt}/>
                 <RootContentContainer ref={mainRef}>
                     <AppBar>
                         <CustomToolbar>
@@ -160,7 +114,6 @@ function App() {
                                         .start()
                                 }}/>
                         </Grid>
-
                         <Grid item>
                             <Avatar
                                 alt="Remy Sharp"
@@ -170,7 +123,7 @@ function App() {
                         </Grid>
                     </MyInfoContainer>
                     <SkillsContainer ref={skillsRef}>
-                        <Typography variant={"h3"}>
+                        <Typography fontFamily={"inherit"} variant={"h3"}>
                             My skills
                         </Typography>
                         <Slide direction={"left"} in={visibleSkills} appear timeout={{enter: 2000, exit: 1500}}>
@@ -181,14 +134,15 @@ function App() {
                                                       skillName={s.skillName}
                                                       skillNameColor={s.skillNameColor}
                                                       skillInfo={s.skillInfo}
-                                                      skillImg={s.skillImg}/>
+                                                      skillImg={s.skillImg}
+                                                      skillDocumentationLink={s.skillDocumentationLink}/>
                                     })
                                 }
                             </Skills>
                         </Slide>
                     </SkillsContainer>
                     <MyWorksContainer ref={worksRef}>
-                        <Typography variant={"h3"}>
+                        <Typography fontFamily={"inherit"} variant={"h3"}>
                             Examples of my work
                         </Typography>
                         <Grow
@@ -211,21 +165,21 @@ function App() {
 
                     </MyWorksContainer>
                     <ContactsContainer ref={contactsRef}>
-                        <Typography variant={"h3"}>Contacts</Typography>
+                        <Typography fontFamily={"inherit"} variant={"h3"}>Contacts</Typography>
                         <RootPaperContactsContainer elevation={5}>
                             <Grid item>
-                                <Typography variant={'h2'} fontWeight={"bold"}>Let's discuss your offer</Typography>
-                                <Grid item style={{float:'left'}}>
+                                <Typography variant={'h2'} fontFamily={"inherit"} fontWeight={"bold"}>Let's discuss your offer</Typography>
+                                <Grid item style={{float: 'left'}}>
                                     <PhoneCallbackOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0}}>+44 1632 967704</h4>
+                                    <h4 style={{margin: 0, fontSize:'large'}}>+44 1632 967704</h4>
                                 </Grid>
                                 <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
                                     <EmailOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0}}>your@gmail.com</h4>
+                                    <h4 style={{margin: 0, fontSize:'large'}}>your@gmail.com</h4>
                                 </Grid>
                                 <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
                                     <LocationOnOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0}}>Brest, Belarus</h4>
+                                    <h4 style={{margin: 0, fontSize:'large'}}>Brest, Belarus</h4>
                                 </Grid>
 
                                 <SocialContactsContainer>
@@ -553,3 +507,4 @@ const ModeButton = styled(IconButton)`
   bottom: 10px;
   right: 0;
 `
+

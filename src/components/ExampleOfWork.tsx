@@ -11,15 +11,10 @@ import {
     styled,
     Typography
 } from "@mui/material";
+import {ExampleProjectType} from "../data/WorkExamples";
 
-type ExampleOfWorkPropsType = {
-    previewImage: string,
-    projectName: string,
-    projectDescription: string
-    gitHubURL: string
-}
 
-function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL}:ExampleOfWorkPropsType) {
+function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL}:ExampleProjectType) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -82,7 +77,7 @@ const ExampleOfWorkContainer = styled(Paper)`
     :hover {
       opacity: 0.3;
       cursor: pointer;
-      transform: scale(1.3);
+      transform: scale(1.2);
     }
 
   }

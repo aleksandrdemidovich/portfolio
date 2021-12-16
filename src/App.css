@@ -1,5 +1,6 @@
 *{
   scroll-behavior: smooth;
+  font-family: 'Cormorant Garamond', serif;
 }
 body, html {
   width: 100%;
@@ -8,5 +9,5 @@ body, html {
 
 
 .autoWrite{
-  font-size: 33px;
+  font-size: 50px;
 }

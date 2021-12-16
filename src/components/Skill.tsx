@@ -1,15 +1,16 @@
 import React from 'react';
 import '../App.css';
 import {IconButton, Paper, styled, Typography} from "@mui/material";
+import {SkillType} from "../data/Skills";
 
-type SkillPropsType = {
-    skillName: string
-    skillNameColor: string
-    skillInfo: string
-    skillImg: string
-}
 
-function Skill({skillImg, skillInfo, skillName, skillNameColor}: SkillPropsType) {
+
+function Skill({skillImg, skillInfo, skillName, skillNameColor, skillDocumentationLink}: SkillType) {
+
+    const openInNewTab = (url: string): void => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+    }
 
     return (
         <SkillContainer elevation={5}>
@@ -20,7 +21,7 @@ function Skill({skillImg, skillInfo, skillName, skillNameColor}: SkillPropsType)
             <Typography variant={"body1"}>
                 {skillInfo}
             </Typography>
-            <IconButton size={"small"}>Learn more</IconButton>
+            <IconButton size={"small"} onClick={() => openInNewTab(skillDocumentationLink)}>Learn more</IconButton>
 
         </SkillContainer>
 
