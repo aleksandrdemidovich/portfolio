@@ -2,10 +2,11 @@ import React from 'react';
 import '../App.css';
 import {IconButton, Paper, styled, Typography} from "@mui/material";
 import {SkillType} from "../data/Skills";
+import {Fade} from "react-awesome-reveal";
 
 
 
-function Skill({skillImg, skillInfo, skillName, skillNameColor, skillDocumentationLink}: SkillType) {
+function Skill({skillImg, skillInfo, skillName, skillNameColor, skillDocumentationLink, fadeDirection}: SkillType) {
 
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -13,7 +14,8 @@ function Skill({skillImg, skillInfo, skillName, skillNameColor, skillDocumentati
     }
 
     return (
-        <SkillContainer elevation={5}>
+        <SkillContainer elevation={5} onClick={() => openInNewTab(skillDocumentationLink)}>
+            <Fade direction={fadeDirection}>
             <img src={skillImg} style={{width:'100px', height:'100px'}}  alt="logo"/>
             <Typography variant={"h5"} color={skillNameColor}>
                 {skillName}
@@ -21,16 +23,15 @@ function Skill({skillImg, skillInfo, skillName, skillNameColor, skillDocumentati
             <Typography variant={"body1"}>
                 {skillInfo}
             </Typography>
-            <IconButton size={"small"} onClick={() => openInNewTab(skillDocumentationLink)}>Learn more</IconButton>
-
+            <IconButton size={"small"} >Learn more</IconButton>
+            </Fade>
         </SkillContainer>
-
     );
 }
 
 export default Skill;
 
-const SkillContainer = styled(Paper)`
+export const SkillContainer = styled(Paper)`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

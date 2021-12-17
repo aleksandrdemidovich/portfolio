@@ -8,13 +8,14 @@ import {
     DialogContentText,
     DialogTitle,
     Paper,
-    styled,
+    styled, Tooltip,
     Typography
 } from "@mui/material";
 import {ExampleProjectType} from "../data/WorkExamples";
+import {Flip} from "react-awesome-reveal";
 
 
-function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL}:ExampleProjectType) {
+function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL}: ExampleProjectType) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -24,34 +25,36 @@ function ExampleOfWork({previewImage, projectName, projectDescription, gitHubURL
 
     return (
         <ExampleOfWorkContainer elevation={5}>
-            <img src={previewImage} onClick={handleClickOpen}/>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                fullWidth
-                maxWidth={"xl"}
-            >
-                <DialogTitle >
-                    {projectName}
-                </DialogTitle>
-                <DialogContent >
-                    <DialogContentText>
-                        <img src={previewImage} style={{width:'77vw', overflowX:'hidden'}}/>
-                    </DialogContentText>
+            <Flip direction={"horizontal"}>
+                <img src={previewImage} title={'Click to open preview'} onClick={handleClickOpen}/>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    fullWidth
+                    maxWidth={"xl"}
+                >
+                    <DialogTitle>
+                        {projectName}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            <img src={previewImage} style={{width: '77vw', overflowX: 'hidden'}}/>
+                        </DialogContentText>
 
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color={"secondary"}>close</Button>
-                    <Button onClick={handleClose} color={"success"} href={gitHubURL} target="_blank">Try online</Button>
-                </DialogActions>
-            </Dialog>
-            <Typography variant={"body2"} fontSize={"medium"} fontWeight={"bold"}>Click to open preview</Typography>
-            <Typography variant={"h5"}>
-                {projectName}
-            </Typography>
-            <Typography variant={"subtitle2"}>
-                {projectDescription}
-            </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color={"secondary"}>close</Button>
+                        <Button onClick={handleClose} color={"success"} href={gitHubURL} target="_blank">Try
+                            online</Button>
+                    </DialogActions>
+                </Dialog>
+                <Typography variant={"h5"}>
+                    {projectName}
+                </Typography>
+                <Typography variant={"subtitle2"}>
+                    {projectDescription}
+                </Typography>
+            </Flip>
         </ExampleOfWorkContainer>
     );
 }
@@ -68,33 +71,21 @@ const ExampleOfWorkContainer = styled(Paper)`
   width: 45%;
   height: 100%;
   padding: 40px;
-  
-  
+
+
   img {
     width: 500px;
     border: 1px solid gray;
     transition: 0.5s;
+
     :hover {
       opacity: 0.3;
       cursor: pointer;
       transform: scale(1.2);
     }
-
   }
 
-  .MuiTypography-body2 {
-    display: none;
-    position: absolute;
-    margin-top: 90px;
-    color: #3f51b5;
-    :hover {
-      display: block;
-      opacity: 1;
-       & img {
-        opacity: 0.3;
-      }
-    }
-  }
+
   .MuiTypography-h5 {
     padding-top: 20px;
   }
@@ -104,26 +95,26 @@ const ExampleOfWorkContainer = styled(Paper)`
       display: block;
     }
   }
-  
+
   @media (max-width: 768px) {
     width: 95%;
     margin: auto auto 20px;
-    img{
+    img {
       width: 400px;
     }
   }
   @media (max-width: 1024px) {
-    img{
+    img {
       width: 250px;
     }
   }
 
   @media (max-width: 1440px) {
-    img{
+    img {
       width: 300px;
     }
   }
-  
+
 `
 
 

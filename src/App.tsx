@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
     AppBar,
     Avatar,
     Button, createTheme, CssBaseline,
-    Grid, Grow,
+    Grid,
     IconButton,
-    PaletteOptions, Paper, Slide,
+    PaletteOptions, Paper,
     styled,
     TextField, ThemeProvider,
-    Toolbar,
+    Toolbar, Tooltip,
     Typography
 } from "@mui/material";
 import Typewriter from 'typewriter-effect';
@@ -30,6 +30,7 @@ import {skills} from "./data/Skills";
 import {workExamples} from "./data/WorkExamples";
 import {particleOpt} from "./common/backgroundOptions";
 import Particles from "react-tsparticles";
+import {Fade, Flip} from "react-awesome-reveal";
 
 
 function App() {
@@ -39,38 +40,6 @@ function App() {
     const skillsRef = React.useRef<HTMLDivElement>(null)
     const worksRef = React.useRef<HTMLDivElement>(null)
     const contactsRef = React.useRef<HTMLDivElement>(null)
-
-
-    const [visibleSkills, setVisibleSkills] = React.useState(false);
-    const [visibleWorkExamples, setVisibleWorkExamples] = React.useState(false);
-
-
-    const listenToScroll = () => {
-        let heightToHideSkills = 1300;
-        let heightToHideWorkExamples = 2300;
-        const winScroll = document.body.scrollTop ||
-            document.documentElement.scrollTop;
-
-        if (winScroll > heightToHideSkills) {
-            // visibleSkills &&  // to limit setting state only the first time
-            setVisibleSkills(false);
-        } else {
-            setVisibleSkills(true);
-        }
-
-        if (winScroll > heightToHideWorkExamples) {
-            // visibleWorkExamples &&      // to limit setting state only the first time
-            setVisibleWorkExamples(false);
-        } else {
-            setVisibleWorkExamples(true);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", listenToScroll);
-        return () =>
-            window.removeEventListener("scroll", listenToScroll);
-    }, [visibleSkills])
 
 
     const scrollTo = (ref: any) => {
@@ -115,92 +84,97 @@ function App() {
                                 }}/>
                         </Grid>
                         <Grid item>
-                            <Avatar
+                            <CustomAvatar
                                 alt="Remy Sharp"
                                 src="https://www.seoclerk.com/pics/319222-1IvI0s1421931178.png"
-                                sx={{width: 350, height: 350, border: '1px solid gray'}}
                             />
                         </Grid>
                     </MyInfoContainer>
                     <SkillsContainer ref={skillsRef}>
+                        <Flip direction={"horizontal"}>
                         <Typography fontFamily={"inherit"} variant={"h3"}>
                             My skills
                         </Typography>
-                        <Slide direction={"left"} in={visibleSkills} appear timeout={{enter: 2000, exit: 1500}}>
-                            <Skills>
-                                {
-                                    skills.map((s, i) => {
-                                        return <Skill key={i}
-                                                      skillName={s.skillName}
-                                                      skillNameColor={s.skillNameColor}
-                                                      skillInfo={s.skillInfo}
-                                                      skillImg={s.skillImg}
-                                                      skillDocumentationLink={s.skillDocumentationLink}/>
-                                    })
-                                }
-                            </Skills>
-                        </Slide>
+                        </Flip>
+                        <Skills>
+                            {
+                                skills.map((s, i) => {
+                                    return <Skill key={i}
+                                                  skillName={s.skillName}
+                                                  skillNameColor={s.skillNameColor}
+                                                  skillInfo={s.skillInfo}
+                                                  skillImg={s.skillImg}
+                                                  skillDocumentationLink={s.skillDocumentationLink}
+                                                  fadeDirection={s.fadeDirection}/>
+                                })
+                            }
+                        </Skills>
                     </SkillsContainer>
                     <MyWorksContainer ref={worksRef}>
+                        <Flip direction={"horizontal"}>
                         <Typography fontFamily={"inherit"} variant={"h3"}>
                             Examples of my work
                         </Typography>
-                        <Grow
-                            in={visibleWorkExamples}
-                            style={{transformOrigin: '0 0 0'}}
-                            {...(visibleWorkExamples ? {timeout: 2000} : {})}
-                        >
-                            <WorksExamples>
-                                {
-                                    workExamples.map((e, i) => {
-                                        return <ExampleOfWork key={i}
-                                                              previewImage={e.previewImage}
-                                                              projectName={e.projectName}
-                                                              projectDescription={e.projectDescription}
-                                                              gitHubURL={e.gitHubURL}/>
-                                    })
-                                }
-                            </WorksExamples>
-                        </Grow>
-
+                        </Flip>
+                        <WorksExamples>
+                            {
+                                workExamples.map((e, i) => {
+                                    return <ExampleOfWork key={i}
+                                                          previewImage={e.previewImage}
+                                                          projectName={e.projectName}
+                                                          projectDescription={e.projectDescription}
+                                                          gitHubURL={e.gitHubURL}/>
+                                })
+                            }
+                        </WorksExamples>
                     </MyWorksContainer>
                     <ContactsContainer ref={contactsRef}>
+                        <Flip direction={"horizontal"}>
                         <Typography fontFamily={"inherit"} variant={"h3"}>Contacts</Typography>
+                        </Flip>
                         <RootPaperContactsContainer elevation={5}>
                             <Grid item>
-                                <Typography variant={'h2'} fontFamily={"inherit"} fontWeight={"bold"}>Let's discuss your offer</Typography>
-                                <Grid item style={{float: 'left'}}>
-                                    <PhoneCallbackOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0, fontSize:'large'}}>+44 1632 967704</h4>
-                                </Grid>
-                                <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
-                                    <EmailOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0, fontSize:'large'}}>your@gmail.com</h4>
-                                </Grid>
-                                <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
-                                    <LocationOnOutlinedIcon fontSize={"medium"}/>
-                                    <h4 style={{margin: 0, fontSize:'large'}}>Brest, Belarus</h4>
-                                </Grid>
+                                <Fade direction={"left"}>
+                                    <Typography variant={'h2'} fontFamily={"inherit"} fontWeight={"bold"}>Let's discuss
+                                        your
+                                        offer</Typography>
+                                    <Grid item>
+                                        <PhoneCallbackOutlinedIcon fontSize={"medium"}/>
+                                        <h4 style={{margin: '0 0 0 10px', fontSize: 'large'}}>+44 1632 967704</h4>
+                                    </Grid>
+                                    <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
+                                        <EmailOutlinedIcon fontSize={"medium"}/>
+                                        <h4 style={{margin: '0 0 0 10px', fontSize: 'large'}}>your@gmail.com</h4>
+                                    </Grid>
+                                    <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
+                                        <LocationOnOutlinedIcon fontSize={"medium"}/>
+                                        <h4 style={{margin: '0 0 0 10px', fontSize: 'large'}}>Brest, Belarus</h4>
+                                    </Grid>
 
-                                <SocialContactsContainer>
-                                    <IconButton aria-label="LinkedIn">
-                                        <LinkedInIcon style={{color: '#2867B2'}} fontSize={"large"}/>
-                                    </IconButton>
-                                    <IconButton aria-label="GitHub">
-                                        <GitHubIcon style={isDarkMode ? {color: '#e8eaea'} : {color: '#171515'}}
-                                                    fontSize={"large"}/>
-                                    </IconButton>
-                                    <IconButton aria-label="Instagram">
-                                        <InstagramIcon style={{color: '#bc2a8d'}} fontSize={"large"}/>
-                                    </IconButton>
-                                </SocialContactsContainer>
-                                <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
-                                    <CheckIcon style={{margin: '0 20px 0 50px'}} color={"success"} fontSize={"large"}/>
-                                    <h3>Also i am considering the option of remote work</h3>
-                                </Grid>
+                                    <SocialContactsContainer>
+                                        <IconButton aria-label="LinkedIn">
+                                            <LinkedInIcon style={{color: '#2867B2'}} fontSize={"large"}/>
+                                        </IconButton>
+                                        <IconButton aria-label="GitHub">
+                                            <GitHubIcon style={isDarkMode ? {color: '#e8eaea'} : {color: '#171515'}}
+                                                        fontSize={"large"}/>
+                                        </IconButton>
+                                        <IconButton aria-label="Instagram">
+                                            <InstagramIcon style={{color: '#bc2a8d'}} fontSize={"large"}/>
+                                        </IconButton>
+                                    </SocialContactsContainer>
+
+                                    <Grid item display={"flex"} flexDirection={"row"} alignItems={"center"}>
+                                        <CheckIcon style={{margin: '0 20px 0 50px'}} color={"success"}
+                                                   fontSize={"large"}/>
+                                        <h3>Also i am considering the option of remote work</h3>
+                                    </Grid>
+                                </Fade>
                             </Grid>
                             <Grid container>
+
                                 <FormContainer>
+
                                     <TextField fullWidth id="outlined-basic" label="Name" variant="standard" required/>
                                     <TextField fullWidth id="outlined-basic" label="Email" variant="standard" required/>
                                     <TextField
@@ -213,7 +187,9 @@ function App() {
                                         rows={3}
                                     />
                                     <Button variant="contained" size={"large"} endIcon={<SendIcon/>}>Send</Button>
+
                                 </FormContainer>
+
                             </Grid>
                         </RootPaperContactsContainer>
                     </ContactsContainer>
@@ -226,7 +202,13 @@ function App() {
                     </FooterContainer>
                 </RootContentContainer>
                 <ModeButton aria-label="Switcher Mode" size={"large"} onClick={() => setDarkMode(!isDarkMode)}>
-                    {isDarkMode ? <LightModeIcon color={"warning"}/> : <DarkModeIcon/>}
+                    {isDarkMode
+                        ? <Tooltip title={'Switch to light mode'} placement={"top-end"}>
+                            <LightModeIcon color={"warning"}/>
+                        </Tooltip>
+                        : <Tooltip title={'Switch to dark mode'} placement={"top-end"}>
+                            <DarkModeIcon/>
+                        </Tooltip>}
                 </ModeButton>
             </div>
         </ThemeProvider>
@@ -272,9 +254,14 @@ const HeaderButtonContainer = styled(Grid)`
   justify-content: flex-end;
   flex-wrap: nowrap;
 
-  & .MuiButton-root {
+   .MuiButton-root {
     color: white;
     background: none;
+
+     :hover{
+      transform: translateY(-5px);
+      color: #ce93d8;
+    }
   }
 
   @media (max-width: 768px) {
@@ -337,6 +324,16 @@ const MyInfoContainer = styled(Grid)`
     h2 {
       font-size: 1rem;
     }
+  }
+`
+const CustomAvatar = styled(Avatar)`
+  width: 350px;
+  height: 350px;
+  border: 1px solid gray;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 250px;
   }
 `
 const SkillsContainer = styled(Grid)`
@@ -429,10 +426,10 @@ const ContactsContainer = styled(Grid)`
       flex-direction: column;
     }
 
-  ,
-  .MuiGrid-container {
-    width: 100%;
-  }
+
+    .MuiGrid-container {
+      width: 100%;
+    }
   }
 `
 const RootPaperContactsContainer = styled(Paper)`
@@ -497,6 +494,12 @@ const SocialContactsContainer = styled(Grid)`
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+
+  .MuiIconButton-root { 
+    :hover {
+      transform: translateY(-10px);
+    }
+  }
 
   @media (max-width: 768px) {
     justify-content: space-around;

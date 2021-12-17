@@ -10,4 +10,11 @@ body, html {
 
 .autoWrite{
   font-size: 50px;
+
+}
+
+@media (max-width: 600px) {
+  .autoWrite {
+    font-size: 32px;
+  }
 }
