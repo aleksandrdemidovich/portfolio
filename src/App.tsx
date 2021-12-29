@@ -385,7 +385,7 @@ const WorksExamples = styled(Grid)`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 

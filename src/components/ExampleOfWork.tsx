@@ -69,8 +69,9 @@ const ExampleOfWorkContainer = styled(Paper)`
   justify-content: flex-start;
   text-align: center;
   width: 45%;
-  height: 100%;
+  height: 50%;
   padding: 40px;
+  margin: 20px;
 
 
   img {

@@ -1,5 +1,6 @@
 import socialNetworkPreview from "../temp/social-network-preview-img.png";
 import todolistPreview from "../temp/todolist-preview-img.png";
+import cardsLearningPreview from "../temp/cards-learning-preview.png";
 
 export type ExampleProjectType = {
     previewImage: string,
@@ -19,5 +20,12 @@ export const workExamples = [
         projectName: 'Todolist',
         projectDescription: 'What is a ToDo List? The definition is a simple one. It\'s a list of tasks you need to complete, or things that you want to do.',
         gitHubURL: 'https://aleksandrdemidovich.github.io/todo-list/'
+    },
+    {
+        previewImage: cardsLearningPreview,
+        projectName: 'Cards learning',
+        projectDescription: 'Flashcards are effective tools for both learning and studying when they’re used correctly. ' +
+            'Whether you’re cramming for a test or learning a new language, flashcard apps help you study smarter, not longer.',
+        gitHubURL: 'https://aleksandrdemidovich.github.io/friday-project/#/login'
     },
 ] as Array<ExampleProjectType>
