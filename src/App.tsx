@@ -31,6 +31,7 @@ import {workExamples} from "./data/WorkExamples";
 import {particleOpt} from "./common/backgroundOptions";
 import Particles from "react-tsparticles";
 import {Fade, Flip} from "react-awesome-reveal";
+import ContactsForm from "./components/ContactsForm";
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
     const skillsRef = React.useRef<HTMLDivElement>(null)
     const worksRef = React.useRef<HTMLDivElement>(null)
     const contactsRef = React.useRef<HTMLDivElement>(null)
+
+
 
 
     const scrollTo = (ref: any) => {
@@ -172,30 +175,13 @@ function App() {
                                 </Fade>
                             </Grid>
                             <Grid container>
-
-                                <FormContainer>
-
-                                    <TextField fullWidth id="outlined-basic" label="Name" variant="standard" required/>
-                                    <TextField fullWidth id="outlined-basic" label="Email" variant="standard" required/>
-                                    <TextField
-                                        variant={"standard"}
-                                        fullWidth
-                                        id="outlined-multiline-static"
-                                        label="Message"
-                                        multiline
-                                        required
-                                        rows={3}
-                                    />
-                                    <Button variant="contained" size={"large"} endIcon={<SendIcon/>}>Send</Button>
-
-                                </FormContainer>
-
+                                <ContactsForm/>
                             </Grid>
                         </RootPaperContactsContainer>
                     </ContactsContainer>
                     <FooterContainer>
-                        <Typography variant={"h4"}>Aleksandr Demidovich</Typography>
-                        <Typography variant={"subtitle1"} display={"flex"} alignItems={"center"}>
+                        <Typography variant={"h6"}>Aleksandr Demidovich</Typography>
+                        <Typography variant={"subtitle2"} display={"flex"} alignItems={"center"}>
                             <CopyrightIcon fontSize={"small"}/>
                             All rights reserved
                         </Typography>
@@ -460,20 +446,6 @@ const RootPaperContactsContainer = styled(Paper)`
 
   ,
   }
-`
-const FormContainer = styled('form')`
-  width: 80%;
-  display: flex;
-  margin-top: 20px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-
-  .MuiTextField-root {
-    margin: 20px;
-  }
-
 `
 const FooterContainer = styled(Grid)`
   width: 100%;
