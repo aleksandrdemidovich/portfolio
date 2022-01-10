@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.e2b9a11a.chunk.css",
-    "main.js": "/portfolio/static/js/main.32d0f1b3.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.32d0f1b3.chunk.js.map",
-    "runtime-main.js": "/portfolio/static/js/runtime-main.cea3d5ff.js",
-    "runtime-main.js.map": "/portfolio/static/js/runtime-main.cea3d5ff.js.map",
-    "static/js/2.17220092.chunk.js": "/portfolio/static/js/2.17220092.chunk.js",
-    "static/js/2.17220092.chunk.js.map": "/portfolio/static/js/2.17220092.chunk.js.map",
-    "static/js/3.c9de6818.chunk.js": "/portfolio/static/js/3.c9de6818.chunk.js",
-    "static/js/3.c9de6818.chunk.js.map": "/portfolio/static/js/3.c9de6818.chunk.js.map",
+    "main.js": "/portfolio/static/js/main.aa6bac65.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.aa6bac65.chunk.js.map",
+    "runtime-main.js": "/portfolio/static/js/runtime-main.3af48fac.js",
+    "runtime-main.js.map": "/portfolio/static/js/runtime-main.3af48fac.js.map",
+    "static/js/2.5f36a1d8.chunk.js": "/portfolio/static/js/2.5f36a1d8.chunk.js",
+    "static/js/2.5f36a1d8.chunk.js.map": "/portfolio/static/js/2.5f36a1d8.chunk.js.map",
+    "static/js/3.7427d76c.chunk.js": "/portfolio/static/js/3.7427d76c.chunk.js",
+    "static/js/3.7427d76c.chunk.js.map": "/portfolio/static/js/3.7427d76c.chunk.js.map",
     "index.html": "/portfolio/index.html",
     "static/css/main.e2b9a11a.chunk.css.map": "/portfolio/static/css/main.e2b9a11a.chunk.css.map",
-    "static/js/2.17220092.chunk.js.LICENSE.txt": "/portfolio/static/js/2.17220092.chunk.js.LICENSE.txt",
+    "static/js/2.5f36a1d8.chunk.js.LICENSE.txt": "/portfolio/static/js/2.5f36a1d8.chunk.js.LICENSE.txt",
     "static/media/cards-learning-preview.bedb0505.png": "/portfolio/static/media/cards-learning-preview.bedb0505.png",
     "static/media/social-network-preview-img.bd1213dc.png": "/portfolio/static/media/social-network-preview-img.bd1213dc.png",
     "static/media/todolist-preview-img.1ddb29e6.png": "/portfolio/static/media/todolist-preview-img.1ddb29e6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.cea3d5ff.js",
-    "static/js/2.17220092.chunk.js",
+    "static/js/runtime-main.3af48fac.js",
+    "static/js/2.5f36a1d8.chunk.js",
     "static/css/main.e2b9a11a.chunk.css",
-    "static/js/main.32d0f1b3.chunk.js"
+    "static/js/main.aa6bac65.chunk.js"
   ]
 }
