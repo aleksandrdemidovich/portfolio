@@ -7,13 +7,12 @@ import {
     IconButton,
     PaletteOptions, Paper,
     styled,
-    TextField, ThemeProvider,
+    ThemeProvider,
     Toolbar, Tooltip,
     Typography
 } from "@mui/material";
 import Typewriter from 'typewriter-effect';
 import './App.css';
-import SendIcon from '@mui/icons-material/Send';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -32,6 +31,7 @@ import {particleOpt} from "./common/backgroundOptions";
 import Particles from "react-tsparticles";
 import {Fade, Flip} from "react-awesome-reveal";
 import ContactsForm from "./components/ContactsForm";
+import CValert from "./components/CV-alert";
 
 
 function App() {
@@ -41,8 +41,6 @@ function App() {
     const skillsRef = React.useRef<HTMLDivElement>(null)
     const worksRef = React.useRef<HTMLDivElement>(null)
     const contactsRef = React.useRef<HTMLDivElement>(null)
-
-
 
 
     const scrollTo = (ref: any) => {
@@ -65,6 +63,8 @@ function App() {
                                 <Button color={"secondary"} onClick={() => scrollTo(skillsRef)}>Skills</Button>
                                 <Button color={"secondary"} onClick={() => scrollTo(worksRef)}>Works</Button>
                                 <Button color={"secondary"} onClick={() => scrollTo(contactsRef)}>Contacts</Button>
+
+                                <CValert/>
                             </HeaderButtonContainer>
                         </CustomToolbar>
                     </AppBar>
@@ -95,9 +95,9 @@ function App() {
                     </MyInfoContainer>
                     <SkillsContainer ref={skillsRef}>
                         <Flip direction={"horizontal"}>
-                        <Typography fontFamily={"inherit"} variant={"h3"}>
-                            My skills
-                        </Typography>
+                            <Typography fontFamily={"inherit"} variant={"h3"}>
+                                My skills
+                            </Typography>
                         </Flip>
                         <Skills>
                             {
@@ -115,9 +115,9 @@ function App() {
                     </SkillsContainer>
                     <MyWorksContainer ref={worksRef}>
                         <Flip direction={"horizontal"}>
-                        <Typography fontFamily={"inherit"} variant={"h3"}>
-                            Examples of my work
-                        </Typography>
+                            <Typography fontFamily={"inherit"} variant={"h3"}>
+                                Examples of my work
+                            </Typography>
                         </Flip>
                         <WorksExamples>
                             {
@@ -133,7 +133,7 @@ function App() {
                     </MyWorksContainer>
                     <ContactsContainer ref={contactsRef}>
                         <Flip direction={"horizontal"}>
-                        <Typography fontFamily={"inherit"} variant={"h3"}>Contacts</Typography>
+                            <Typography fontFamily={"inherit"} variant={"h3"}>Contacts</Typography>
                         </Flip>
                         <RootPaperContactsContainer elevation={5}>
                             <Grid item>
@@ -155,10 +155,10 @@ function App() {
                                     </Grid>
 
                                     <SocialContactsContainer>
-                                        <IconButton aria-label="LinkedIn">
+                                        <IconButton aria-label="LinkedIn" href={'https://www.linkedin.com/in/aleksandr-demidovich-3774a2162/'} target={'_blank'}>
                                             <LinkedInIcon style={{color: '#2867B2'}} fontSize={"large"}/>
                                         </IconButton>
-                                        <IconButton aria-label="GitHub">
+                                        <IconButton aria-label="GitHub" href={'https://github.com/aleksandrdemidovich'} target={'_blank'}>
                                             <GitHubIcon style={isDarkMode ? {color: '#e8eaea'} : {color: '#171515'}}
                                                         fontSize={"large"}/>
                                         </IconButton>
@@ -240,11 +240,11 @@ const HeaderButtonContainer = styled(Grid)`
   justify-content: flex-end;
   flex-wrap: nowrap;
 
-   .MuiButton-root {
+  .MuiButton-root {
     color: white;
     background: none;
 
-     :hover{
+    :hover {
       transform: translateY(-5px);
       color: #ce93d8;
     }
@@ -467,7 +467,7 @@ const SocialContactsContainer = styled(Grid)`
   justify-content: center;
   align-items: center;
 
-  .MuiIconButton-root { 
+  .MuiIconButton-root {
     :hover {
       transform: translateY(-10px);
     }
