@@ -1,6 +1,8 @@
 import socialNetworkPreview from "../temp/social-network-preview-img.png";
 import todolistPreview from "../temp/todolist-preview-img.png";
 import cardsLearningPreview from "../temp/cards-learning-preview.png";
+import iMarketPreview from "../temp/iMarket-preview.png";
+
 
 export type ExampleProjectType = {
     previewImage: string,
@@ -27,5 +29,11 @@ export const workExamples = [
         projectDescription: 'Flashcards are effective tools for both learning and studying when they’re used correctly. ' +
             'Whether you’re cramming for a test or learning a new language, flashcard apps help you study smarter, not longer.',
         gitHubURL: 'https://aleksandrdemidovich.github.io/friday-project/#/login'
+    },
+    {
+        previewImage: iMarketPreview,
+        projectName: 'Simple online store',
+        projectDescription: 'Simple online store. Used Firebase to authorize and store products. Material UI for better UI experience.',
+        gitHubURL: 'https://aleksandrdemidovich.github.io/orders-list/'
     },
 ] as Array<ExampleProjectType>
