@@ -104,18 +104,17 @@ const ExampleOfWorkContainer = styled(Paper)`
       width: 400px;
     }
   }
-  @media (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1023px){
     img {
-      width: 250px;
+      width: 200px;
     }
   }
 
-  @media (max-width: 1440px) {
+  @media (min-width: 1024px) {
     img {
-      width: 300px;
+      width: 350px;
     }
   }
-
 `
 
 

@@ -74,7 +74,7 @@ function App() {
                                 options={{deleteSpeed: 30, wrapperClassName: 'autoWrite', cursorClassName: 'autoWrite'}}
                                 onInit={(typewriter) => {
                                     typewriter.typeString('Hello!' + '<br> ')
-                                        .changeDelay(50)
+                                        .changeDelay(30)
                                         .typeString('My name is Aleksandr Demidovich')
                                         .pauseFor(300)
                                         .deleteChars(20)
@@ -346,7 +346,7 @@ const Skills = styled(Grid)`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -354,11 +354,10 @@ const Skills = styled(Grid)`
 `
 const MyWorksContainer = styled(Grid)`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   text-align: center;
 
@@ -378,7 +377,6 @@ const WorksExamples = styled(Grid)`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-
 `
 const ContactsContainer = styled(Grid)`
   width: 100%;
@@ -402,12 +400,11 @@ const ContactsContainer = styled(Grid)`
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    padding-bottom: 30px;
-
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
+    height: auto;
     .MuiPaper-root {
       flex-direction: column;
     }
