@@ -101,7 +101,7 @@ const ExampleOfWorkContainer = styled(Paper)`
     width: 95%;
     margin: auto auto 20px;
     img {
-      width: 400px;
+      width: 300px;
     }
   }
   @media (min-width: 769px) and (max-width: 1023px){
