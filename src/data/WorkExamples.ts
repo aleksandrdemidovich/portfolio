@@ -2,6 +2,7 @@ import socialNetworkPreview from "../temp/social-network-preview-img.png";
 import todolistPreview from "../temp/todolist-preview-img.png";
 import cardsLearningPreview from "../temp/cards-learning-preview.png";
 import iMarketPreview from "../temp/iMarket-preview.png";
+import trelloClonePreview from "../temp/trello-clone-preview.png";
 
 
 export type ExampleProjectType = {
@@ -35,5 +36,11 @@ export const workExamples = [
         projectName: 'Simple online store',
         projectDescription: 'Simple online store. Used Firebase to authorize and store products. Material UI for better UI experience.',
         gitHubURL: 'https://aleksandrdemidovich.github.io/orders-list/'
+    },
+    {
+        previewImage: trelloClonePreview,
+        projectName: 'Trello clone',
+        projectDescription: 'Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all with Trello.',
+        gitHubURL: 'https://project-managment-app.netlify.app/'
     },
 ] as Array<ExampleProjectType>

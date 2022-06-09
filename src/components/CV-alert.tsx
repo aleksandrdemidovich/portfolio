@@ -1,18 +1,7 @@
 import React from 'react';
 import '../App.css';
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle, Grid,
-    Paper,
-    styled,
-} from "@mui/material";
-import cv from "./../temp/CV.png"
-
-
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper,} from "@mui/material";
+import cv from "./../temp/CV_png.png"
 
 
 function CValert() {
@@ -48,7 +37,7 @@ function CValert() {
                     <DialogActions>
                         <Button onClick={handleClose} color={"secondary"}>close</Button>
                         <Button onClick={handleClose}
-                                href={'https://drive.google.com/file/d/1fXphwCIrarQGxBqj6afg7wInVusYhz7P/view?usp=sharing'}
+                                href={'https://drive.google.com/file/d/1hZJZafhGyCqHk4WgRaqwBC4jWa5CKc8f/view?usp=sharing'}
                                 target={"_blank"}
                                 color={"success"}>open in google file</Button>
                     </DialogActions>
