@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc21000-ff67-4106-8a21-c00caa65948c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/temp/CV_png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/temp/trello-clone-preview.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CV-alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CV-alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/WorkExamples.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/WorkExamples.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +125,9 @@
       <workItem from="1641893961187" duration="13434000" />
       <workItem from="1642609443992" duration="1813000" />
       <workItem from="1643114986149" duration="8669000" />
-      <workItem from="1654780486244" duration="1083000" />
+      <workItem from="1654780486244" duration="1373000" />
+      <workItem from="1657392822647" duration="29000" />
+      <workItem from="1657532721403" duration="80000" />
     </task>
     <servers />
   </component>

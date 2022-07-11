@@ -37,7 +37,7 @@ function CValert() {
                     <DialogActions>
                         <Button onClick={handleClose} color={"secondary"}>close</Button>
                         <Button onClick={handleClose}
-                                href={'https://drive.google.com/file/d/1hZJZafhGyCqHk4WgRaqwBC4jWa5CKc8f/view?usp=sharing'}
+                                href={'https://drive.google.com/file/d/18slJw2h7Mw_VSRUSAgbeqeiCD89gxjvg/view'}
                                 target={"_blank"}
                                 color={"success"}>open in google file</Button>
                     </DialogActions>
